@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server>
+	<featureManager>
+		<feature>microProfile-3.0</feature>
+		<feature>jdbc-4.2</feature>
+		<feature>jndi-1.0</feature>
+		<feature>jaxrs-2.1</feature>
+		<feature>jsonp-1.1</feature>
+		<feature>cdi-2.0</feature>
+		<feature>mpMetrics-2.0</feature>
+		<feature>mpHealth-2.0</feature>
+		<feature>mpConfig-1.3</feature>
+		<feature>configValidator-1.0</feature>
+	</featureManager>
+	
+	<webApplication location="guide-cdi-intro.war"
+		contextRoot="/" />
+		
+	<dataSource jndiName="jdbc/postgresql">
+		<jdbcDriver libraryRef="PostgresLib" />
+		<properties.postgresql serverName="localhost"
+			portNumber="5432" databaseName="examen01" user="postgres"
+			password="admin" />
+	</dataSource>
+
+	<library id="PostgresLib">
+		<fileset dir="${server.config.dir}/jdbc" />
+	</library>
+</server>
