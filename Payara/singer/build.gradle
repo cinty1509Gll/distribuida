@@ -1,0 +1,23 @@
+
+plugins {
+   id "com.bmuschko.cargo" version "2.3"
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+    // Required for deployment-client:5.0 dependency
+    maven {
+        url "https://maven.java.net/content/repositories/promoted/"
+    }
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.glassfish.main.deployment/deployment-client
+//Compile group: 'org.glassfish.main.deployment', name: 'deployment-client', version: '5.1.0'
+// https://mvnrepository.com/artifact/org.codehaus.cargo/cargo-ant
+testCompile group: 'org.codehaus.cargo', name: 'cargo-ant', version: '1.7.9'
+// https://mvnrepository.com/artifact/fish.payara.extras/payara-embedded-all
+testCompile group: 'fish.payara.extras', name: 'payara-embedded-all', version: '5.194'
+
+}
