@@ -1,23 +1,31 @@
-
-plugins {
-   id "com.bmuschko.cargo" version "2.3"
-    id 'java-library'
+buildscript {
+	repositories {
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+	}
+	dependencies {
+		classpath "gradle.plugin.fish.payara.gradle.plugins:payara-micro-gradle-plugin:1.0.3"
+	}
 }
 
+apply plugin: "fish.payara.micro-gradle-plugin"
+apply plugin: "war"
+
 repositories {
-    mavenCentral()
-    // Required for deployment-client:5.0 dependency
-    maven {
-        url "https://maven.java.net/content/repositories/promoted/"
-    }
+	jcenter()
 }
 
 dependencies {
-    // https://mvnrepository.com/artifact/org.glassfish.main.deployment/deployment-client
-//Compile group: 'org.glassfish.main.deployment', name: 'deployment-client', version: '5.1.0'
-// https://mvnrepository.com/artifact/org.codehaus.cargo/cargo-ant
-testCompile group: 'org.codehaus.cargo', name: 'cargo-ant', version: '1.7.9'
-// https://mvnrepository.com/artifact/fish.payara.extras/payara-embedded-all
-testCompile group: 'fish.payara.extras', name: 'payara-embedded-all', version: '5.194'
+	compile group: 'javax', name: 'javaee-api', version: '8.0.1'
+	compile group: 'org.postgresql', name: 'postgresql', version: '42.2.8'
+	compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.7.0'
+	
+}
 
+payaraMicro {
+    payaraVersion = '5.194'
+    deployWar = true
+    useUberJar = true
+    daemon = false
 }
