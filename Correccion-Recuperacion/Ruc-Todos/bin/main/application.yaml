@@ -1,0 +1,11 @@
+server:
+    port: 7001
+javax:
+  sql:
+    DataSource:
+      todosDataSource:
+        dataSourceClassName: org.postgresql.ds.PGSimpleDataSource
+        dataSource:
+          url: jdbc:postgresql://localhost:5432/Distribuida
+          user: "postgres"
+          password: "admin"
